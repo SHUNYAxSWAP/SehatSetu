@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose')
 const dotenv = require("dotenv");
-const {clientRouter} = require('./Routes/client')
-const {ClientModel} = require('./Db/db')
+const { clientRouter } = require('./Routes/client')
+const { doctorRouter } = require('./Routes/doctor')
 
 dotenv.config();
 
@@ -10,17 +10,18 @@ const port = process.env.PORT;
 const DATABASE_URL = process.env.DATABASE_URL;
 const app = express();
 
-async function main(){
+async function main() {
     await mongoose.connect(DATABASE_URL)
 }
 
 app.use(express.json())
 app.use("/user", clientRouter)
+app.use("/doctor", doctorRouter)
 
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.send("Working")
 })
-app.listen(port,()=>{
+app.listen(port, () => {
     console.log(`The app is running on http://localhost:${port}`)
 })
 

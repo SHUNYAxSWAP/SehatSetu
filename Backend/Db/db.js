@@ -18,8 +18,32 @@ const Client = new Schema ({
         pincode:String
     }
 })
+
+const Doctor = new Schema({
+    name: String,
+    email: String,
+    password: String,
+    phone: Number,
+    specialization: [String],
+    experience: Number,
+    location: {
+        state: String,
+        city: String,
+        pincode : String
+    },
+    availiability: {
+        day: String,
+        start: String,
+        end: String
+    },
+    verified: Boolean,
+    createdAt: String
+})
+
 const ClientModel = mongoose.model("Client",Client)
+const DoctorModel = mongoose.model("Doctor", Doctor)
 
 module.exports = {
-    ClientModel : ClientModel
+    ClientModel ,
+    DoctorModel 
 }
