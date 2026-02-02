@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "SehatSetu Docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/SHUNYAxSWAP/SehatSetu/tree/secondbranch"
+    }
+  }
+}
