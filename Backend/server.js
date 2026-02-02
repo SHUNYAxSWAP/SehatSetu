@@ -1,10 +1,12 @@
+const dotenv = require("dotenv");
 const express = require('express');
 const mongoose = require('mongoose')
-const dotenv = require("dotenv");
-const { clientRouter } = require('./Routes/client')
-const { doctorRouter } = require('./Routes/doctor')
+const cookieParser = require('cookie-parser')
 
 dotenv.config();
+
+const { clientRouter } = require('./Routes/client')
+const { doctorRouter } = require('./Routes/doctor');
 
 const port = process.env.PORT;
 const DATABASE_URL = process.env.DATABASE_URL;
@@ -15,6 +17,7 @@ async function main() {
 }
 
 app.use(express.json())
+app.use(cookieParser())
 app.use("/user", clientRouter)
 app.use("/doctor", doctorRouter)
 
